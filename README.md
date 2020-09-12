@@ -17,4 +17,4 @@ To jump from a Java class file to the test file, or from test file to the class 
 
 ### Custom Mapping
 ```
-nnoremap gt :JavaUnitJump<CR>
+nnoremap gt :JavaJUnitJump<CR>
