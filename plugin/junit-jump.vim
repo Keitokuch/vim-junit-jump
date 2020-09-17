@@ -41,7 +41,6 @@ fun s:to_test()
     let l:file_name = expand('%:t')
     let l:file_dir = expand('%:h')
     if expand('%:e') == 'java'
-        echo 'java file'
         let l:class_name = expand('%:t:r')
         let l:test_name = l:class_name . 'Test.java'
         let l:test_dir = substitute(l:file_dir, 'main', 'test', '')
