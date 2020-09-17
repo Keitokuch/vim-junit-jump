@@ -9,13 +9,11 @@ fun! JavaJUnitJump()
     let l:file_name = expand('%:t')
     let l:file_dir = expand('%:h')
     if stridx(expand('%:h'), 'test') >= 0
-        echo "test dir"
         call s:to_class()
     elseif stridx(expand('%:h'), 'main') >= 0
-        echo "main dir"
         call s:to_test()
     else
-        echo "Not in a test or main directory"
+        echo "[junit-jump] Unable to jump: Not in a test or main directory."
         return
     endif
 endf
@@ -28,13 +26,13 @@ fun s:to_class()
         let l:file_dir = substitute(l:file_dir, 'test', 'main', '')
         let l:file = l:file_dir.'/'.l:file_name
         if !filereadable(l:file)
-            echo "Can't open class file"
+            echo "[junit-jump] Can't open class file ".l:file
             return
         else
             exec 'edit '.l:file
         endif
     else
-        echo 'Not a test class'
+        echo '[junit-jump] Unable to jump: Not a test class.'
         return
     endif
 endf
@@ -57,7 +55,7 @@ fun s:to_test()
             exec 'edit '.l:test_file
         endif
     else
-        echo 'not a java class'
+        echo '[junit-jump] Unable to jump: Not a java class'
         return
     endif
 endf
