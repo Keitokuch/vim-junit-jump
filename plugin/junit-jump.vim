@@ -47,6 +47,7 @@ fun s:to_test()
         let l:test_file = l:test_dir.'/'.l:test_name
         if filereadable(l:test_file) != 1
             let l:create = input("Can't find test for ".l:file_name."\nCreate test file? (Y/n):")
+            redraw | echo
             if l:create == 'Y' || l:create == 'y' || l:create == ''
                 exec 'edit '.l:test_file
             endif
