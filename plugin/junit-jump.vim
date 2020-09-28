@@ -49,6 +49,9 @@ fun s:to_test()
             let l:create = input("Can't find test for ".l:file_name."\nCreate test file? (Y/n):")
             redraw | echo
             if l:create == 'Y' || l:create == 'y' || l:create == ''
+                if !isdirectory(l:test_dir)
+                    call mkdir(l:test_dir, "p")
+                endif
                 exec 'edit '.l:test_file
             endif
         else
